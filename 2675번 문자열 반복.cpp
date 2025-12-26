@@ -1,17 +1,18 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(){
-	int t, r;
-	char s[21];
+	int t, rot;
+	char arr[21];
 	scanf("%d", &t);
-	for(int i=0;i<t;i++){
-		scanf("%d %s", &r, s);
-		for(int j=0;j<strlen(s);j++){
-			for(int k=0;k<r;k++)
-				printf("%c", s[j]);
+	while(t>0){
+		scanf("%d %s", &rot, arr);
+		for(int i=0;arr[i] != '\0';i++){
+			for(int j=0;j<rot;j++)
+				printf("%c", arr[i]);
+			
 		}
 		printf("\n");
+		
+		t--;
 	}
-	
 }

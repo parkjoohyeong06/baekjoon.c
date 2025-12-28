@@ -1,28 +1,25 @@
 #include <stdio.h>
 
 int main(){
-	int isGroup = 0, t, count = 0;
-	int alpha[26];
+	int t, visited[26], count=0;
 	char arr[101];
 	scanf("%d", &t);
-	for(int i=1;i<=t;i++){
-		for(int i=0;i<26;i++)
-			alpha[i] = 0;
+	for(int i=0;i<t;i++){
+		int isGroup = 1;
 		scanf("%s", arr);
-		int prev = arr[0];
-		alpha[prev - 'a'] = 1;
-		isGroup = 1; // 그룹단어 이면 1, 아니면 0 
+		for(int k=0;k<26;k++)
+			visited[k] = 0;
+		visited[arr[0] - 'a'] = 1;
 		for(int j=1;arr[j] != '\0';j++){
-			if(arr[j] != prev){
-				if(alpha[arr[j] - 'a'] == 1){
+			if(arr[j] != arr[j-1])
+				if(visited[arr[j] - 'a'] == 1){
 					isGroup = 0;
 					break;
 				}
-				alpha[arr[j] - 'a'] = 1;
-				prev = arr[j];
-			}
+		visited[arr[j] - 'a'] = 1;
 		}
-		if(isGroup)
+		
+		if(isGroup == 1)
 			count++;
 	}
 	printf("%d", count);
